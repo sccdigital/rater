@@ -9,9 +9,9 @@ module ApplicationHelper
 		current_rating = object.average_rating || 0
 		
 		if user_rating > 0
-			ret = "<div class='rating-interface rated' id='#{identifier}'>"
+			ret = "<div class=\"rating-interface rated\" id=\"#{identifier}\">"
 		else
-			ret = "<div class='rating-interface' id='#{identifier}'>"
+			ret = "<div class=\"rating-interface\" id=\"#{identifier}\">"
 		end
 		
 		

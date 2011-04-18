@@ -7,16 +7,18 @@ class Rater::RatingsController < ApplicationController
 		@rating.rateable_id = params[:rateable_id]
 		@rating.stars = params[:stars]
 		
+		@identifier = "rating_#{@rating.rateable_type}_#{@rating.rateable_id}"
+		
     respond_to do |format|
 			
-			if session["rating_#{@rating.rateable_type}_#{@rating.id}"].present?
+			if session[@identifier].present?
 				@error = "We're very sorry, but you can only rate something once."
 				format.html { redirect_to params[:back] || root_url, :error => @error }
 				format.js {render :action => 'error'}
 			else
 
 				if @rating.save
-					session["rating_#{@rating.rateable_type}_#{@rating.id}"] = @rating.stars
+					session[@identifier] = @rating.stars
 				
 		      format.html { redirect_to params[:back] || root_url }
 		      format.js {}
