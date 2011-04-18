@@ -1,4 +1,5 @@
-Rails.application.routes.draw do |map|
+Rails.application.routes.draw do
   namespace :rater do
-    map 'rating/:_type/:id/:rating', 'ratings#create', :as => :new_rating
+    match 'rating/:_type/:id/:rating' => 'ratings#create', :as => :new_rating
+	end
 end
