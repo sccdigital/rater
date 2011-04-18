@@ -21,13 +21,7 @@ module ApplicationHelper
 			else
 				klass = 'inactive'
 			end
-			
-			if star <= user_rating + 0.5
-				klass << ' user-active'
-			else
-				klass << ' user-inactive'
-			end
-				
+		
 			ret << rater_link(object, star, klass)
 		end
 		ret << "</div>"
