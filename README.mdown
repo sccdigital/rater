@@ -1,0 +1,3 @@
+# Rater: A Rails3 Ratings Gem
+
+The goal of this gem is to create a simple way to implement ratings that uses progressive enhancement, avoiding reliance on javascript. The gem assumes the presence of jQuery and an appropriate rails.js.
