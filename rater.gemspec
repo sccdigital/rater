@@ -14,10 +14,10 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     "app/controllers/rater/ratings_controller.rb",
-    "app/helpers/rater/ratings_helper.rb",
     "app/models/rater/rating.rb",
     "config/routes.rb",
     "lib/acts_as_rated/base.rb",
+    "lib/application_helper.rb",
     "lib/engine.rb",
     "lib/rails/generators/rater_install_generator.rb",
     "lib/rails/generators/templates/migration.rb",

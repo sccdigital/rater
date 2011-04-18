@@ -1,0 +1,36 @@
+module ApplicationHelper
+	def rater_link(object, rating, klass='')
+    link_to rating.to_s, rater_create_rating_path(object.class.to_s, object.id, rating, :back => request.url), :remote => true, :class => klass
+  end
+
+	def rater_interface_for(object)
+		identifier = "rating_#{object.class.to_s}_#{object.id}"
+		user_rating = session[identifier] || 0
+		
+		if user_rating > 0
+			ret = "<div class='rating-interface rated' id='#{identifier}'>"
+		else
+			ret = "<div class='rating-interface' id='#{identifier}'>"
+		end
+		current_rating = object.average_rating
+		
+		
+		(1..5).each do |star|
+			if star <= current_rating + 0.5
+				klass = 'active'
+			else
+				klass = 'inactive'
+			end
+			
+			if star <= user_rating + 0.5
+				klass << ' user-active'
+			else
+				klass << ' user-inactive'
+			end
+				
+			ret << rater_link(object, star, klass)
+		end
+		ret << "</div>"
+		ret.html_safe
+	end
+end

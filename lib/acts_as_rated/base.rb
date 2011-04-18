@@ -9,16 +9,25 @@ module Rater
 
 			module Config
 				def acts_as_rated
-					has_many :ratings, :as => :rateable, :class_name => 'Rater::Rating'
+					has_many :ratings, :as => :rateable, :class_name => 'Rater::Rating', :dependent => :destroy
 					include Rater::ActsAsRated::Base::InstanceMethods
+					# extend Rater::ActsAsRated::Base::SingletonMethods
 				end
 			end
 		
 			module InstanceMethods
 				def average_rating
-					'ratings come in here.'
+					self.ratings.average(:stars)
 				end
 			end
+			
+			# module SingletonMethods
+			# 	def rate(rating)
+			# 		rating = Rater::Rating.new({:rateable_id => self.id, :rateable_type => self.class, :stars => rating})
+			# 		rating.save
+			# 	end
+			# end
+			
 		end
 	end
 end
