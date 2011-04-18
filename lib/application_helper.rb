@@ -6,13 +6,13 @@ module ApplicationHelper
 	def rater_interface_for(object)
 		identifier = "rating_#{object.class.to_s}_#{object.id}"
 		user_rating = session[identifier] || 0
+		current_rating = object.average_rating || 0
 		
 		if user_rating > 0
 			ret = "<div class='rating-interface rated' id='#{identifier}'>"
 		else
 			ret = "<div class='rating-interface' id='#{identifier}'>"
 		end
-		current_rating = object.average_rating
 		
 		
 		(1..5).each do |star|
