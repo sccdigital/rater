@@ -17,7 +17,12 @@ module Rater
 		
 			module InstanceMethods
 				def average_rating
-					self.ratings.average(:stars)
+					rating = self.ratings.average(:stars)
+					if rating.nil?
+					  0
+					else
+					  rating
+					end
 				end
 			end
 			
