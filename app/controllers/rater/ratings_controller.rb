@@ -20,11 +20,11 @@ class Rater::RatingsController < ApplicationController
 				if @rating.save
 					session[@identifier] = @rating.stars
 				
-		      format.html { redirect_to params[:back] || root_url }
-		      format.js {}
+		       format.html { redirect_to params[:back] || root_url }
+		       format.js {}
 				else
 					@error = "Woops, there was a problem that kept that rating from being saved. Please try again."
-					format.html { redirect_to params[:back] || root_url, :error => @error }
+					 format.html { redirect_to params[:back] || root_url, :error => @error }
 					format.js {render :action => 'error'}
 				end
 

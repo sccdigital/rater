@@ -1,6 +1,8 @@
 module ApplicationHelper
 	def rater_link(object, rating, klass='')
-    link_to "<span>#{rating.to_s}</span>".html_safe, rater_create_rating_path(object.class.to_s, object.id, rating, :back => request.url), :remote => true, :class => klass
+   #link_to "<span>#{rating.to_s}</span>".html_safe, rater_create_rating_path(object.class.to_s, object.id, rating, :back => request.url), :remote => true, :class => klass
+    
+  "<a class=\"#{klass}\" rel=\"#{object.class.to_s} #{object.id} #{rating}\"><span>#{rating.to_s}</span></a>"
   end
 
 	def rater_interface_for(object)
