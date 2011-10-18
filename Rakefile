@@ -4,7 +4,7 @@ begin
     gem.name = "rater"
     gem.summary = "Ratings Engine for Rails 3"
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
-    gem.version = '0.0.0'
+    gem.version = '0.0.1'
     # other fields that would normally go in your gemspec
     # like authors, email and has_rdoc can also be included here
 
